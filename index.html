@@ -60,18 +60,12 @@
   }
 
   .avatar {
-    width: 96px; height: 96px;
+    width: 104px; height: 104px;
     margin: 0 auto 28px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--gold) 0%, #6b5a1e 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 40px;
-    font-weight: 700;
-    color: #050505;
-    letter-spacing: -1px;
-    box-shadow: 0 0 0 1px var(--gold-dim), 0 8px 40px rgba(212, 175, 55, 0.18);
+    object-fit: cover;
+    display: block;
+    box-shadow: 0 0 0 2px var(--gold-dim), 0 8px 40px rgba(212, 175, 55, 0.18);
   }
 
   h1 {
@@ -207,9 +201,9 @@
 <div class="wrap">
 
   <header>
-    <div class="avatar">W</div>
-    <h1>whitequeen<span class="accent">306</span></h1>
-    <p class="tagline">Building things on the internet.</p>
+    <img class="avatar" src="https://github.com/whitequeen306.png" alt="胡俊成的头像">
+    <h1>胡<span class="accent">俊成</span></h1>
+    <p class="tagline">whitequeen306 · 在网上做点有意思的东西</p>
     <div class="divider"></div>
   </header>
 
