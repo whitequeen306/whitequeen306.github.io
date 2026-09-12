@@ -102,13 +102,13 @@
   .tag:nth-child(5) { animation-delay: -1.8s; }
   .tag:nth-child(6) { animation-delay: -3.0s; }
 
-  /* 桌面端：标签分布在头像四周 */
+  /* 桌面端：头像居中，标签分列左右竖排 */
   @media (min-width: 720px) {
-    .tag.t1 { top: 8px;    right: calc(100% + 18px); }
-    .tag.t2 { bottom: 6px; right: calc(100% + 18px); }
-    .tag.t3 { top: -12px;  left: 50%; transform: translateX(-50%); }
-    .tag.t4 { top: 8px;    left: calc(100% + 18px); }
-    .tag.t5 { bottom: 6px; left: calc(100% + 18px); }
+    .tag.t1 { top: -8px;   right: calc(100% + 18px); }
+    .tag.t2 { bottom: -8px; right: calc(100% + 18px); }
+    .tag.t3 { top: -20px;  left: calc(100% + 18px); }
+    .tag.t4 { top: 26px;   left: calc(100% + 18px); }
+    .tag.t5 { bottom: -20px; left: calc(100% + 18px); }
   }
 
   /* 窄屏：标签回落成头像下方一排，仍保持浮动 */
