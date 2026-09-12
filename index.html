@@ -59,6 +59,13 @@
     text-align: center;
   }
 
+  .avatar-zone {
+    position: relative;
+    width: 104px;
+    margin: 0 auto 28px;
+    animation: float 5s ease-in-out infinite;
+  }
+
   .avatar {
     width: 104px; height: 104px;
     margin: 0 auto 28px;
@@ -66,6 +73,61 @@
     object-fit: cover;
     display: block;
     box-shadow: 0 0 0 2px var(--gold-dim), 0 8px 40px rgba(212, 175, 55, 0.18);
+  }
+
+  .avatar-zone .avatar { margin-bottom: 0; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+  }
+
+  .tag {
+    position: absolute;
+    white-space: nowrap;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    padding: 5px 12px;
+    border: 1px solid var(--gold-dim);
+    border-radius: 999px;
+    background: rgba(13, 12, 9, 0.9);
+    color: var(--gold-soft);
+    animation: float 5s ease-in-out infinite;
+  }
+
+  /* 交错相位，让标签与头像错落浮动 */
+  .tag:nth-child(2) { animation-delay: -1.2s; }
+  .tag:nth-child(3) { animation-delay: -2.4s; }
+  .tag:nth-child(4) { animation-delay: -3.6s; }
+  .tag:nth-child(5) { animation-delay: -1.8s; }
+  .tag:nth-child(6) { animation-delay: -3.0s; }
+
+  /* 桌面端：标签分布在头像四周 */
+  @media (min-width: 720px) {
+    .tag.t1 { top: 8px;    right: calc(100% + 18px); }
+    .tag.t2 { bottom: 6px; right: calc(100% + 18px); }
+    .tag.t3 { top: -12px;  left: 50%; transform: translateX(-50%); }
+    .tag.t4 { top: 8px;    left: calc(100% + 18px); }
+    .tag.t5 { bottom: 6px; left: calc(100% + 18px); }
+  }
+
+  /* 窄屏：标签回落成头像下方一排，仍保持浮动 */
+  @media (max-width: 719px) {
+    .avatar-zone {
+      width: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+    .tag { position: static; }
+    .avatar-zone .avatar { width: 88px; height: 88px; margin-right: 8px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .avatar-zone, .tag { animation: none; }
   }
 
   h1 {
@@ -201,17 +263,24 @@
 <div class="wrap">
 
   <header>
-    <img class="avatar" src="avatar.jpg" alt="胡俊成的头像" width="104" height="104">
+    <div class="avatar-zone">
+      <img class="avatar" src="avatar.jpg" alt="胡俊成的头像" width="104" height="104">
+      <span class="tag t1">中原工学院软件工程</span>
+      <span class="tag t2">Agent</span>
+      <span class="tag t3">智能体底层开发</span>
+      <span class="tag t4">Java</span>
+      <span class="tag t5">传统后端设计</span>
+    </div>
     <h1>胡<span class="accent">俊成</span></h1>
     <p class="tagline">whitequeen306 · 在网上做点有意思的东西</p>
     <div class="divider"></div>
   </header>
 
   <section class="about">
-    <h2>About · Agent 工程</h2>
-    <p>我专注做 <strong>Agent 自动化系统</strong>的工程落地：用 Playwright 驱动真实浏览器环境，把「感知 → 决策 → 执行 → 校验」做成可长期无人值守运行的流水线，而不是一个个孤立脚本。</p>
-    <p>工程上我更关心那些 demo 里看不见的部分：<strong>任务调度与并发编排</strong>（流水线分组、失败重试、优雅降级）、<strong>对抗性环境下的稳定性</strong>（限流熔断、会话保活、页面坏死自愈）、<strong>LLM 的可控接入</strong>（多模态答题、配额与降级链路、输出解析兜底），以及缓存一致性与幂等终态这类数据正确性问题。</p>
-    <p>一句话：<strong>让 Agent 从「能跑一次」到「跑得久、跑得稳」</strong>。</p>
+    <h2>About</h2>
+    <p>我是 <strong>胡俊成</strong>，中原工学院软件工程专业，主攻 <strong>Agent 底层开发</strong>——关心的不是套壳调 API，而是把智能体拆开来看：工具怎么注册与路由、环境怎么隔离与回滚、记忆怎么存取与遗忘、上下文怎么裁剪与预算控制、每一步怎么被观测和复盘。这些环节我在多个实际工程项目里跑通过全链路，踩过并解决过大模型输出不可控、长会话上下文膨胀、工具调用链路雪崩这类真实的工程问题。</p>
+    <p>Agent 之外，我有扎实的 <strong>Java / Python 传统后端功底</strong>：熟悉并发调度、事务一致性、缓存体系与风控熔断这些服务端的硬功夫——恰恰是这些传统后端能力，构成了 Agent 系统稳定运行的底座。前端方面也能独立完成从设计到落地的整条路，包括这种自己写排版和动效的页面。</p>
+    <p>我的方向很明确：<strong>做能真正跑在生产里的智能体系统</strong>——底层扎实、链路可观测、失败可恢复。</p>
   </section>
 
   <section>
